@@ -1,0 +1,9 @@
+﻿<Application x:Class="CCP_Lab_1_AssemblyBrowser.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CCP_Lab_1_AssemblyBrowser"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
