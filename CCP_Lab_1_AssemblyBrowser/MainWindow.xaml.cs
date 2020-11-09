@@ -25,7 +25,7 @@ namespace CCP_Lab_1_AssemblyBrowser
         {
             InitializeComponent();
             Scanner scanner = new Scanner();
-            scanner.AssemblyLoad("D:\\Bsuir\\SPP\\CPP_Lab_2_Faker\\CPP_Lab_2_Faker\\bin\\Debug\\netcoreapp3.1\\UsersClasses.dll");
+            scanner.AssemblyLoad("D:\\Bsuir\\SPP\\CCP_Lab_1_AssemblyBrowser\\UsersClasses.dll");
             scanner.AssemblyScan();
         }
     }
