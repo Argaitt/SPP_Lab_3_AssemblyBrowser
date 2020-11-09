@@ -14,6 +14,9 @@ x64/
 [Bb]in/
 [Oo]bj/
 
+#my ighore files
+.vs/
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
