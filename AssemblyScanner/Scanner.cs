@@ -23,7 +23,7 @@ namespace AssemblyScanner
             assembly = Assembly.LoadFrom(assemblyFilePath);
         }
 
-        public object AssemblyScan()
+        public InfoCell AssemblyScan()
         {
             var infoAssembly = new InfoCell
             {
@@ -101,8 +101,8 @@ namespace AssemblyScanner
 
             }
 
-            var assemblyData = new object();
-            return assemblyData;
+            
+            return infoAssembly;
         }
 
         public void AssemblyUnload()

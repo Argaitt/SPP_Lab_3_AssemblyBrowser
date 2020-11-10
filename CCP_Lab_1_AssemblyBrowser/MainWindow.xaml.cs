@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AssemblyScanner;
 
+
 namespace CCP_Lab_1_AssemblyBrowser
 {
     /// <summary>
@@ -26,7 +27,8 @@ namespace CCP_Lab_1_AssemblyBrowser
             InitializeComponent();
             Scanner scanner = new Scanner();
             scanner.AssemblyLoad("D:\\Bsuir\\SPP\\CCP_Lab_1_AssemblyBrowser\\UsersClasses.dll");
-            scanner.AssemblyScan();
+            var info = scanner.AssemblyScan();
+            
         }
     }
 }
