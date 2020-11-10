@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace AssemblyScanner
 {
-    class InfoCell
+    public class InfoCell
     {
         public string category { get; set; }
         public string type { get; set; }
