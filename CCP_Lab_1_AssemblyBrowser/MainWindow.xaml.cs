@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AssemblyScanner;
 using Microsoft.Win32;
 using System.IO;
+using System.Data;
 
 namespace CCP_Lab_1_AssemblyBrowser
 {
@@ -32,8 +33,9 @@ namespace CCP_Lab_1_AssemblyBrowser
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            DataSet ds = new DataSet();
             if (openFileDialog.ShowDialog() == true)
-                scanner.AssemblyLoad(File.ReadAllText(openFileDialog.FileName));
+                scanner.AssemblyLoad(openFileDialog.FileName);
             info = scanner.AssemblyScan();
             var nodes = new List<InfoCell>();
             nodes.Add(info);
