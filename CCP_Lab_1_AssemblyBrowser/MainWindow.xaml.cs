@@ -13,7 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AssemblyScanner;
-
+using Microsoft.Win32;
+using System.IO;
 
 namespace CCP_Lab_1_AssemblyBrowser
 {
@@ -22,13 +23,21 @@ namespace CCP_Lab_1_AssemblyBrowser
     /// </summary>
     public partial class MainWindow : Window
     {
+        Scanner scanner = new Scanner();
+        InfoCell info = new InfoCell();
         public MainWindow()
         {
             InitializeComponent();
-            Scanner scanner = new Scanner();
-            scanner.AssemblyLoad("D:\\Bsuir\\SPP\\CCP_Lab_1_AssemblyBrowser\\UsersClasses.dll");
-            var info = scanner.AssemblyScan();
-            
+        }
+        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                scanner.AssemblyLoad(File.ReadAllText(openFileDialog.FileName));
+            info = scanner.AssemblyScan();
+            var nodes = new List<InfoCell>();
+            nodes.Add(info);
+            assembly_info.ItemsSource = nodes;
         }
     }
 }
