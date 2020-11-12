@@ -2,16 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.ComponentModel;
 
 namespace AssemblyScanner
 {
-    public class InfoCell
+    public class InfoCell:INotifyPropertyChanged
     {
-        public string category { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private string category;
         public string type { get; set; }
         public string name { get; set; }
         public List<InfoCell> InfoCells { get; set; }
             = new List<InfoCell>();
+        public string Category
+        {
+            get { return category; }
+            set
+            {
+                if (category == value) 
+                    return; 
+                category = value;
+                OnPropertyChanged("category");
+                
+            }
+        }
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     public class Scanner
@@ -27,7 +45,7 @@ namespace AssemblyScanner
         {
             var infoAssembly = new InfoCell
             {
-                category = "Assembly",
+                Category = "Assembly",
                 name = assembly.GetName().Name,
                 type = assembly.GetType().ToString(),
             };
@@ -42,7 +60,7 @@ namespace AssemblyScanner
                     nsInfo = namespaces[type.Namespace] = new InfoCell
                     {
                         name = type.Namespace,
-                        category = "Namespace",
+                        Category = "Namespace",
                         type = "None",
                     };
                     infoAssembly.InfoCells.Add(nsInfo);
@@ -52,7 +70,7 @@ namespace AssemblyScanner
                 var classInfo = new InfoCell
                 {
                     name = type.FullName,
-                    category = "Class",
+                    Category = "Class",
                     type = "None"
                 };
                 nsInfo.InfoCells.Add(classInfo);
@@ -73,7 +91,7 @@ namespace AssemblyScanner
                     {
                         name = propOrField.Name,
                         type = propOrField.FieldType.ToString(),
-                        category = "propertyOrField"
+                        Category = "propertyOrField"
                     };
                     classInfo.InfoCells.Add(propOrFieldInfo);
                 }
@@ -93,7 +111,7 @@ namespace AssemblyScanner
                     {
                         name = method.Name,
                         type = signature,
-                        category = "method"
+                        Category = "method"
                     };
                     classInfo.InfoCells.Add(methodInfo);
                 }
