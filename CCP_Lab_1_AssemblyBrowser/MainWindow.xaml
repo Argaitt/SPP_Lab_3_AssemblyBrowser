@@ -17,9 +17,9 @@
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=InfoCells}">
                     <StackPanel>
-                        <TextBlock Text="{Binding name}" />
-                        <TextBlock Text="{Binding type}" />
-                        <TextBlock Text="{Binding category}" />
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Type}" />
+                        <TextBlock Text="{Binding Category}" />
                     </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
